@@ -1,29 +1,30 @@
-import './App.css';
+import Sidebar from "./components/Sidebar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Signup from "./pages/signup";
+import ConfirmEmail from "./pages/confirmEmail";
+import RequireUser from "./functionality/requireUser";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+const h = () => {
+    return (
+        <h1>Hello</h1>
+    )
+}
+
+const App = () => {
+
+    return (
+
+        <BrowserRouter>
+
+            <Routes>
+                <Route path="signup" element={<Signup />} />
+                <Route path="/" element={<RequireUser Component={Sidebar} />} />
+            </Routes>
+
+        </BrowserRouter>
+
+    )
+
 }
 
 export default App;

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    .sidebar {
+        @apply fixed top-0 left-0 h-screen bg-[#181818] border-r-1 border-[#51515151] w-16 flex flex-col items-center pt-2;
+    }
+
+    .asideLink {
+        @apply opacity-60 cursor-pointer flex items-center justify-center w-9 h-9 p-1 rounded-md hover:bg-[#1f1f1f] border-1 border-transparent hover:border-[#51515151] mb-4 hover:opacity-80;
+    }
+
+    .ative {
+        @apply opacity-100;
+    }
+
+    .hoverButton {
+        @apply pl-2 pr-2 min-h-[2.5rem] bg-[#1f1f1f] text-sm border-1 border-[#51515151] rounded-md flex items-center justify-center gap-2 hover:bg-green-500 hover:border-green-500 hover:text-black transition-all duration-300 hover:scale-95;
+    }
+
+    .whiteButton {
+        @apply pl-2 pr-2 min-h-[2.5rem] bg-gray-100 text-black text-sm rounded-md flex items-center justify-center gap-2 hover:border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-95;
+    }
+
+    .opacityButton {
+        @apply bg-transparent opacity-60 hover:opacity-100 text-sm rounded-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-95;
+    }
+
+    .smallButton {
+        @apply pl-2 pr-2 min-h-[2rem] bg-[#1f1f1f] text-xs border-1 border-[#51515151] rounded-md flex items-center justify-center gap-2 hover:bg-green-500 hover:border-green-500 hover:text-black transition-all duration-300 hover:scale-95;
+    }
+
+    .tooltipLeft {
+        @apply transition-all duration-300 text-sm p-1 pl-2 pr-2 bg-[#1f1f1f] origin-left left-16 border-1 border-[#51515151] scale-0 group-hover:scale-100 rounded-md min-w-max absolute group-hover:flex drop-shadow-md;
+    }
+
+    .authContainer {
+        @apply fixed top-0 left-0 w-screen h-full flex p-10;
+    }
+
+    .authCover {
+        @apply ;
+    }
+
+    .authInput {
+        @apply w-full h-[2.5rem] bg-[#131313] border-1 border-[#51515151] hover:border-[#81818181] focus:border-green-400/50 outline-0 pl-10 pr-2 text-xs rounded-md transition-all;
+    }
+
+    .label {
+        @apply text-xs p-1 pl-2 pr-2 bg-[#1f1f1f] border-1 border-[#51515151] rounded-md max-w-max;
+    }
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0px;
+    background: #191919;
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+}
+
+#logoText {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1.2rem;
+}
+
+.greenRadialGradient {
+    background: rgb(34,197,94);
+    background: radial-gradient(circle, rgba(34,197,94,1) 0%, rgba(31,31,31,1) 80%);
+    filter: blur(200px) opacity(50%);
+}
