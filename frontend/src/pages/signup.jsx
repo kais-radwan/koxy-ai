@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Label from "../components/Label";
 import Logo from "../components/Logo";
 import CheckRow from "../components/CheckRow";
@@ -5,7 +6,7 @@ import { createUser } from "../functionality/auth.ts";
 import { openAlert } from "../components/Alert.jsx";
 import AuthInput from "../components/AuthInput.jsx";
 import Button from "../components/Button.jsx";
-import { useEffect } from "react";
+import LinkButton from "../components/Link.jsx";
 import authEvents from "../functionality/authEvents.ts";
 
 const Signup = () => {
@@ -19,10 +20,10 @@ const Signup = () => {
     ];
 
     const signup = () => {
-        const email = document.querySelector("#email");
-        const password = document.querySelector("#password");
-        if (!email || password) {
-            openAlert("Please enter your email or password");
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        if (!email || !password) {
+            openAlert("Please enter your email and password");
             return undefined;
         }
         createUser({
@@ -44,7 +45,7 @@ const Signup = () => {
 
         <main className="authContainer">
 
-            <div className="min-w-[50%] h-full p-6 relative overflow-hidden rounded-xl bg-[#1f1f1f]">
+            <div className="min-w-[50%] h-full p-6 relative overflow-hidden rounded-xl bg-fgLight">
             
                 <div className="absolute w-full h-full top-0 left-0 p-6 z-10 flex flex-col gap-4">
                     
@@ -83,7 +84,7 @@ const Signup = () => {
                 </div>
 
                 <AuthInput
-                    icon="email"
+                    icon="envelope"
                     type="email"
                     id="email"
                     placeholder="Email address"
@@ -98,18 +99,19 @@ const Signup = () => {
 
                 <Button options={{
                     classes: "hoverButton my-0.5",
-                    rightIcon: "chevron_right",
+                    rightIcon: "circle-right",
                     title: "Create your account",
                     onClick: () => {
                         signup();
                     }
                 }} />
 
-                <Button options={{
+                <LinkButton options={{
+                    to: "/signin",
                     classes: "opacityButton",
-                    title: "Signin to your account"
+                    title: "Sign in to your account"
                 }} />
-            
+
             </div>
 
         </main>

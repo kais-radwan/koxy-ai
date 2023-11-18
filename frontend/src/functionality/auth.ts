@@ -1,4 +1,5 @@
 import { openAlert } from "../components/Alert";
+import { openWaiting, closeWaiting } from "../components/Waiting.jsx";
 import authEvents from "./authEvents.ts";
 import { initializeApp } from "firebase/app";
 import {
@@ -8,6 +9,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     onAuthStateChanged,
+    signOut,
     User
 } from "firebase/auth";
 
@@ -52,6 +54,8 @@ export const currentUser = (): User | null => {
 
 export const createUser = (options: CreateUserOptions) => {
 
+    openWaiting();
+
     if (options.type === "google") {
         signupWithGoogle(options);
     }
@@ -63,6 +67,8 @@ export const createUser = (options: CreateUserOptions) => {
 }
 
 export const signinUser = (options: CreateUserOptions) => {
+
+    openWaiting();
 
     if (options.type === "google") {
         signupWithGoogle(options);
@@ -78,9 +84,14 @@ const signinWithEmail = (options: CreateUserPassword) => {
 
     signInWithEmailAndPassword(auth, options.email, options.password)
         .then ( () => {
+            closeWaiting();
+            localStorage.setItem("userEmail", options.email);
             window.location.href = options.redirect || "/";
         })
-        .catch( () => {})
+        .catch( (err) => {
+            closeWaiting();
+            openAlert(err.message);
+        })
     ;
 }
 
@@ -88,10 +99,12 @@ const signupWithPassword = (options: CreateUserPassword): void => {
 
     createUserWithEmailAndPassword(auth, options.email, options.password)
         .then ( () => {
+            closeWaiting();
             localStorage.setItem("userEmail", options.email);
             window.location.href = options.redirect || "/";
         })
         .catch( (err) => {
+            closeWaiting();
             openAlert(err.message);
         })
     ;
@@ -102,10 +115,26 @@ const signupWithGoogle = (options): void => {
 
     signInWithPopup(auth, googleProvider)
         .then( () => {
+            closeWaiting();
             localStorage.setItem("userEmail", options.email);
             window.location.href = options.redirect || "/";
         })
-        .catch( (err) => {})
+        .catch( (err) => {
+            closeWaiting();
+        })
     ;
+
+}
+
+export const logOut = () => {
+
+    signOut(auth)
+        .then ( () => {
+            localStorage.removeItem("userEmail");
+            window.location.href = "/signup";
+        })
+        .catch( (err) => {
+            openAlert(err.message);
+        })
 
 }
