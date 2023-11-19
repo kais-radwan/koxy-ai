@@ -5,7 +5,20 @@
 @layer components {
 
     .sidebar {
-        @apply fixed top-0 left-0 h-screen bg-fgLight/30 border-r-1 border-border w-64 flex flex-col p-3 pb-0 overflow-y-auto;
+        @apply fixed top-0 left-0 h-screen bg-bg border-r-1 border-border/40 w-64 flex flex-col p-3 pb-0 overflow-y-auto;
+    }
+
+    .mainContainer {
+        @apply pl-64 min-h-screen;
+        /* background: linear-gradient(-120deg, rgba(34,197,94,.05) 0%, rgba(31,31,31,1) 50%); */
+    }
+
+    .innerContainer {
+        @apply p-10;
+    }
+
+    .infoContainer {
+        @apply border-1 border-border rounded-md p-8 flex flex-col items-center justify-center gap-4;
     }
 
     .asideLink {
@@ -17,7 +30,7 @@
     }
 
     .hoverButton {
-        @apply pl-2 pr-2 min-h-[2.5rem] bg-fgLight text-sm border-1 border-border rounded-md flex items-center justify-center gap-2 hover:bg-green-500 hover:border-green-500 hover:text-black transition-all duration-300 hover:scale-95;
+        @apply pl-4 pr-4 min-h-[2.5rem] bg-fgLight text-sm border-1 border-border rounded-md flex items-center justify-center gap-3 hover:bg-green-500 hover:border-green-500 hover:text-black transition-all duration-300 hover:scale-95;
     }
 
     .whiteButton {
