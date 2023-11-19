@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { LoadingPage } from "../components/Loading";
+import { LoadingPage } from "../components/Loading.jsx";
 import authEvents from "./authEvents.ts";
 import { currentUser } from "./auth.ts";
 
 const RequireUser = ({ Component }) => {
 
-    const [allowed, setAllowed] = useState(() => {currentUser()});
+    const [userData, setUser] = useState(() => {currentUser()});
 
     const isUser = localStorage.getItem("userEmail");
     
@@ -17,18 +17,21 @@ const RequireUser = ({ Component }) => {
     authEvents.on("authChange", (user) => {
 
         if (!user) {
-            setAllowed(false);
+            setUser(false);
             window.location.href = "/signup";
             return undefined;
         }
 
-        setAllowed(true);
+        setUser(user);
 
     })
 
     return (
         <>
-            {allowed === true ? <Component /> : <LoadingPage info="Loading Koxy AI" />}
+            {typeof userData === 'object'
+                ? <Component />
+                : <LoadingPage info="Loading Koxy AI" />
+                }
         </>
     )
 
