@@ -29,7 +29,7 @@ const RequireUser = ({ Component }) => {
     return (
         <>
             {typeof userData === 'object'
-                ? <Component />
+                ? <Component user={userData} />
                 : <LoadingPage info="Loading Koxy AI" />
                 }
         </>

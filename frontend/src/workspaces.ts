@@ -72,7 +72,7 @@ export const createWorkspace = async (name: string) => {
         return undefined;
     }
 
-    appwriteDatabases.createDocument(
+    const promise = appwriteDatabases.createDocument(
         process.env.REACT_APP_APPWRITE_DB as string,
         process.env.REACT_APP_WORKSPACES_COLLECTION as string,
         ID.unique(),

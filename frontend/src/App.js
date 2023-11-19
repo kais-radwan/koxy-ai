@@ -1,22 +1,13 @@
-import Sidebar from "./components/Sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./pages/signup";
 import Signin from "./pages/signin";
 import RequireUser from "./functionality/requireUser";
-import { LoadingPage } from "./components/Loading";
-import { getWorkspace } from "./functionality/workspaces.ts";
-import { useEffect } from "react";
+import Home from "./pages/home/body";
 
 const h = () => {
 
-    useEffect( () => {
-        getWorkspace().then( (data) => {
-            console.log(data);
-        })
-    }, []);
-
     return (
-        <LoadingPage info="Getting project info" />
+        <h1>Hello</h1>
     )
 
 }
@@ -33,7 +24,7 @@ const App = () => {
                 <Route path="signup" element={<Signup />} />
                 <Route path="signin" element={<Signin />} />
 
-                <Route path="/" element={<RequireUser Component={h} />} />
+                <Route path="/" element={<RequireUser Component={Home} />} />
 
             </Routes>
 
