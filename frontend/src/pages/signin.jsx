@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import Logo from "../components/Logo";
-import CheckRow from "../components/CheckRow";
-import { signinUser } from "../functionality/auth.ts";
+import CheckRow from "../components/layouts/CheckRow";
+import { signinUser } from "../functionality/auth/auth.ts";
 import { openAlert } from "../components/Alert.jsx";
-import AuthInput from "../components/AuthInput.jsx";
-import Button from "../components/Button.jsx";
-import LinkButton from "../components/Link.jsx";
-import authEvents from "../functionality/authEvents.ts";
+import AuthInput from "../components/inputs/AuthInput.jsx";
+import Button from "../components/buttons/Button.jsx";
+import LinkButton from "../components/buttons/Link.jsx";
+import authEvents from "../functionality/auth/authEvents.ts";
 
 const Signin = () => {
 

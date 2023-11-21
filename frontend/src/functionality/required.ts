@@ -22,6 +22,9 @@ type RequiredRes = RequiredOk | RequiredErr;
 
 const required = (data: Array<RequiredObject>): RequiredRes => {
 
+    let ok: boolean = true;
+    let err: any;
+
     data.map(item => {
 
         const itemKey = item.key;
@@ -30,20 +33,18 @@ const required = (data: Array<RequiredObject>): RequiredRes => {
         const itemSize = item.size || itemValue.length;
 
         if (!itemValue || typeof itemValue !== itemType || itemSize !== itemValue.length) {
-            const err = `${itemKey} is required to be a ${itemType}`;
-            openAlert(err);
+            const error = `${itemKey} is required to be a ${itemType}`;
+            openAlert(error);
             closeWaiting();
-            return {
-                ok: false,
-                err
-            }
+            ok = false;
+            err = error;
         }
 
     });
 
     return {
-        ok: true,
-        err: null
+        ok,
+        err
     }
 
 }

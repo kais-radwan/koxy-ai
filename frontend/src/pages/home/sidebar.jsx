@@ -1,9 +1,14 @@
 import Logo from "../../components/Logo.jsx";
-import AsideLink from "../../components/AsideLink";
-import { logOut } from "../../functionality/auth.ts";
-import Button from "../../components/Button.jsx";
+import AsideLink from "../../components/buttons/AsideLink";
+import { logOut } from "../../functionality/auth/auth.ts";
+import Button from "../../components/buttons/Button.jsx";
+import { useEffect } from "react";
 
-const HomeSidebar = () => {
+const HomeSidebar = ({ active }) => {
+
+    useEffect( () => {
+        document.getElementById(active).classList.add('active');
+    }, []);
 
     return (
 
@@ -11,14 +16,10 @@ const HomeSidebar = () => {
 
             <Logo size="w-11" _static={true} title={true} />
 
-            <Button options={{
-                classes: "smallButton mb-4",
-                title: "New workspace",
-                leftIcon: "plus"
-            }} />
+            <div className="w-full mb-4"></div>
 
-            <AsideLink title="Workspaces" icon="server" />
-            <AsideLink title="Your account" icon="user-astronaut" />
+            <AsideLink id="workspaces" title="Workspaces" icon="server" to="/" />
+            <AsideLink id="account" title="Your account" icon="user-astronaut" to="/account" />
 
             <AsideLink title="What's new" icon="newspaper" />
             <AsideLink title="Status" icon="chart-simple" />

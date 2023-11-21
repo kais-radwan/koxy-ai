@@ -1,21 +1,20 @@
-import { Link } from "react-router-dom";
-import Icon from "./Icon";
+import Icon from "../icons/Icon";
 
-const LinkButton = ({ options }) => {
+const Button = ({ options }) => {
 
     return (
-        <Link 
+        <button 
             className={options.classes || ""}
             id={options.id || `button_${Date.now()}`}
-            to={options.to}
+            onClick={options.onClick || function () {}}
         >
             {options.leftIcon !== undefined ? <Icon name={options.leftIcon} /> : <></>}
             {options.img !== undefined ? <img className="w-6" src={options.img} /> : <></>}
             {options.title}
             {options.rightIcon !== undefined ? <Icon name={options.rightIcon} /> : <></>}
-        </Link>
+        </button>
     )
 
 }
 
-export default LinkButton;
+export default Button;

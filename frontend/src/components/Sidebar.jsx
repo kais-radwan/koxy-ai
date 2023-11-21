@@ -1,15 +1,10 @@
 import Logo from "./Logo";
 import AsideLink from "./AsideLink";
-import { currentUser, logOut } from "../functionality/auth.ts";
+import { logOut } from "../functionality/auth/auth.ts";
 import { useEffect } from "react";
 import Button from "./Button.jsx";
 
 const Sidebar = () => {
-
-    useEffect( () => {
-        const user = currentUser();
-        console.log(user);
-    }, []);
 
     return (
 

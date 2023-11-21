@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./buttons/Button";
 
 export const closeAlert = () => {
     document.getElementById("alertContainer").classList.add("translate-x-[120%]");
@@ -28,7 +28,7 @@ export const openAlert = (info) => {
     document.getElementById("alertContainer").classList.remove("translate-x-[120%]");
     setTimeout( () => {
         closeAlert();
-    }, 3000);
+    }, 4000);
 }
 
 export default Alert;

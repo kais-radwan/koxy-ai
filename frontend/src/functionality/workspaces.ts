@@ -1,6 +1,6 @@
 import { Query, ID, Models } from "appwrite";
 import { appwriteDatabases } from "./appwrite/setup.ts";
-import { currentUser } from "./auth.ts";
+import { currentUser } from "./auth/auth.ts";
 import { closeWaiting, openWaiting } from "../components/Waiting";
 import { v4 } from "uuid";
 import generateId from "./generateId.ts";
@@ -29,8 +29,9 @@ export const getUserWorkspaces = async (): Promise<Models.DocumentList<Models.Do
                 Query.equal('ownerid', userId)
             ]
         )
-    
+
         return data;
+
     } catch (err) {
         openAlert(err.message);
         return undefined;
@@ -46,7 +47,7 @@ export const createWorkspace = async (name: string) => {
 
     const check = required([
         {
-            key: "name",
+            key: "Workspace name",
             value: name,
             type: "string"
         },
@@ -61,7 +62,7 @@ export const createWorkspace = async (name: string) => {
     if (!check.ok) {
         return undefined;
     }
-    
+
     const currentWorkspaces = await getUserWorkspaces();
 
     if (!currentWorkspaces) { return undefined };
@@ -77,14 +78,17 @@ export const createWorkspace = async (name: string) => {
         process.env.REACT_APP_WORKSPACES_COLLECTION as string,
         ID.unique(),
         {
+            name,
             id: v4(),
             ownerid: userId,
-            token: generateId(32)
+            token: generateId(32),
+            role: "owner"
         }
-    ).then( () => {
+    ).then(() => {
         closeWaiting();
         openAlert(`Created workspace: ${name}`);
-    }) .catch( (err) => {
+        window.location.href = "/";
+    }).catch((err) => {
         closeWaiting();
         openAlert(`Error: ${err.message}`);
     })
@@ -112,4 +116,22 @@ export const getWorkspace = async (workspaceId: string): Promise<Models.Document
 
     return doc;
 
+}
+
+function getCurrentDate() {
+    const currentDate = new Date();
+
+    // Get day, month, and year components
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Month is zero-based, so we add 1
+    const year = currentDate.getFullYear().toString();
+
+    // Ensure that single-digit day and month are formatted with leading zeros
+    const formattedDay = (day < 10) ? `0${day}` : day;
+    const formattedMonth = (month < 10) ? `0${month}` : month;
+
+    // Format the date as "mm/dd/yy"
+    const formattedDate = `${formattedMonth}/${formattedDay}/${year}`;
+
+    return formattedDate;
 }

@@ -1,5 +1,6 @@
-import { openAlert } from "../components/Alert";
-import { openWaiting, closeWaiting } from "../components/Waiting.jsx";
+import { openAlert } from "../../components/Alert";
+import { openWaiting, closeWaiting } from "../../components/Waiting.jsx";
+import required from "../required.ts";
 import authEvents from "./authEvents.ts";
 import { initializeApp } from "firebase/app";
 import {
@@ -10,7 +11,9 @@ import {
     signInWithPopup,
     onAuthStateChanged,
     signOut,
-    User
+    User,
+    updateProfile,
+    updatePassword
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -134,6 +137,58 @@ export const logOut = () => {
             window.location.href = "/signup";
         })
         .catch( (err) => {
+            openAlert(err.message);
+        })
+
+}
+
+export const updateDisplayName = (name: string) => {
+
+    openWaiting();
+
+    if (name.length > 32) {
+        closeWaiting();
+        openAlert("Display name should not be more than 32 characters");
+        return undefined;
+    }
+
+    updateProfile(auth.currentUser as User, {
+        displayName: name
+    })
+        .then ( () => {
+            closeWaiting();
+            openAlert("Updated your display name");
+        })
+        .catch( (err) => {
+            closeWaiting();
+            openAlert(err.message);
+        })
+
+}
+
+export const changePassword = (password: string) => {
+
+    openWaiting();
+
+    const check = required([
+        {
+            key: "password",
+            value: password,
+            type: "string"
+        }
+    ])
+
+    if (!check.ok) {
+        return undefined;
+    }
+
+    updatePassword(auth.currentUser as User, password)
+        .then ( () => {
+            closeWaiting();
+            openAlert("Updated your password");
+        })
+        .catch( (err) => {
+            closeWaiting();
             openAlert(err.message);
         })
 

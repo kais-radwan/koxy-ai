@@ -30,4 +30,14 @@ export const updateLoadingInfo = (info) => {
 
 }
 
+export const InnerLoading = ({ info }) => {
+
+    return (
+        <main className="mainContainer flex items-center justify-center">
+            <Loading info={info} />
+        </main>
+    )
+
+}
+
 export default Loading;
