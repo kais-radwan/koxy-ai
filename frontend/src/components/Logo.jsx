@@ -1,17 +1,17 @@
+import { Link } from "react-router-dom";
+
 const Logo = ({ title, _static, size }) => {
 
     return (
-        <a href="/" className="flex items-center gap-2  mt-1 transition-all duration-500 group">
-            <img src="/assets/koxy-white.png" className={`${size !== undefined ? size : "w-12"} object-cover`} />
-            {_static === true
-                ? <></>
-                : <div className="tooltipLeft left-20">Koxy AI</div>
-            }
+        <Link to="/" className="flex items-center gap-2 transition-all duration-500 group transition-all mr-4">
+            <div className="rotate-[45deg] border-1 border-white/20 flex items-center transition-all justify-center w-9 rounded-xl mr-1 group-hover:border-green-500 group-hover:rotate-0">
+                <img src="/assets/K.png" className={`${size !== undefined ? size : ""} object-cover transition-all duration-500 rotate-[-45deg] group-hover:rotate-0 scale-110`} />
+            </div>
             {title === true
-                ? <div id="logoText">Koxy AI</div>
+                ? <div className="min-w-max" id="logoText">Koxy AI</div>
                 : <></>
             }
-        </a>
+        </Link>
     )
 
 }

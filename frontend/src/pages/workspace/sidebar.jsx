@@ -1,9 +1,14 @@
-import Logo from "./Logo";
-import AsideLink from "./AsideLink";
-import { logOut } from "../functionality/auth/auth.ts";
-import Button from "./Button.jsx";
+import Logo from "../../components/Logo";
+import AsideLink from "../../components/buttons/AsideLink";
+import { logOut } from "../../functionality/auth/auth.ts";
+import Button from "../../ccomponents/buttons/Button";
+import { useEffect } from "react";
 
-const Sidebar = () => {
+const WorkspaceSidebar = ({ active }) => {
+
+    useEffect( () => {
+        document.getElementById(active).classList.add('active');
+    }, []);
 
     return (
 
@@ -17,7 +22,7 @@ const Sidebar = () => {
                 leftIcon: "sort"
             }} />
 
-            <AsideLink title="Overview" icon="home" />
+            <AsideLink id="overview" title="Overview" icon="home" />
             <AsideLink title="Services" icon="cubes" />
 
             <div className="text-green-500">
@@ -45,4 +50,4 @@ const Sidebar = () => {
 
 }
 
-export default Sidebar;
+export default WorkspaceSidebar;

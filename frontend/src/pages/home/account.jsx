@@ -1,4 +1,4 @@
-import HomeSidebar from "./sidebar";
+import HomeNavbar from "./navbar.jsx";
 import Hero from "../../components/layouts/Hero";
 import Icon from "../../components/icons/Icon";
 import AuthInput from "../../components/inputs/AuthInput";
@@ -8,13 +8,11 @@ import { updateDisplayName, changePassword } from "../../functionality/auth/auth
 
 const Account = ({ user }) => {
 
-    console.log(user);
-
     return (
 
         <>
 
-            <HomeSidebar active="account" />
+            <HomeNavbar user={user} active="account" />
 
             <main className="mainContainer">
 
@@ -46,7 +44,13 @@ const Account = ({ user }) => {
                         </div>
 
                         <div className="innerInfoContainer">
-                            <AuthInput id="displayName" type="text" placeholder="Enter your display name" defaultValue={user.displayName} icon="user" />
+                            <AuthInput
+                                id="displayName"
+                                type="text"
+                                placeholder="Enter your display name"
+                                defaultValue={user.displayName}
+                                icon="user"
+                            />
                             <Button options={{
                                 classes: "primaryButton max-w-max",
                                 title: "Save changes",
@@ -71,7 +75,12 @@ const Account = ({ user }) => {
                         </div>
 
                         <div className="innerInfoContainer">
-                            <AuthInput id="passwd" type="password" placeholder="Enter your new password" icon="key" />
+                            <AuthInput
+                                id="passwd"
+                                type="password"
+                                placeholder="Enter your new password"
+                                icon="key"
+                            />
                             <Button options={{
                                 classes: "primaryButton max-w-max",
                                 title: "Update password",

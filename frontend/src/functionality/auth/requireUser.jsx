@@ -1,33 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadingPage } from "../../components/Loading.jsx";
-import authEvents from "./authEvents.ts";
-import { currentUser } from "./auth.ts";
+import { currentUser, authUpdated } from "./auth.ts";
 
 const RequireUser = ({ Component, title, description }) => {
 
     const [userData, setUser] = useState(() => {currentUser()});
 
-    const isUser = localStorage.getItem("userEmail");
-    
-    if (!isUser) {
-        window.location.href = "/signup";
-        return undefined;
-    }
-
     document.title = `Koxy AI | ${title || ""}`;
     document.description = description || "The Serverless AI-Powered Platform";
 
-    authEvents.on("authChange", (user) => {
+    useEffect( () => {
+        
+        const isUser = localStorage.getItem("userEmail");
 
-        if (!user) {
-            setUser(false);
+        if (!isUser) {
             window.location.href = "/signup";
             return undefined;
         }
-
-        setUser(user);
-
-    })
+        
+        authUpdated((authUser) => {
+            setUser(authUser);
+        });
+        
+    }, []);
 
     return (
         <>

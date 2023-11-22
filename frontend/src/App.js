@@ -4,8 +4,12 @@ import Signup from "./pages/signup";
 import Signin from "./pages/signin";
 import RequireUser from "./functionality/auth/requireUser";
 
+// Home
 import Home from "./pages/home/body";
 import Account from "./pages/home/account";
+
+// Workspace
+import WorkspaceOverview from "./pages/workspace/overview";
 
 const h = () => {
 
@@ -34,6 +38,11 @@ const App = () => {
                 <Route path="/account" element={
                     <RequireUser Component={Account} title="Your account" />
                 } />
+
+                <Route
+                    path="/workspace/:id"
+                    element={<RequireUser Component={WorkspaceOverview} title="Workspace" />}
+                />
 
 
             </Routes>

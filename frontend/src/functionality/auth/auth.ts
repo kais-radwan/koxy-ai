@@ -55,6 +55,16 @@ export const currentUser = (): User | null => {
     return auth.currentUser;
 }
 
+export const authUpdated = (cb: Function) => {
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            cb(user);
+        }
+    })
+
+}
+
 export const createUser = (options: CreateUserOptions) => {
 
     openWaiting();

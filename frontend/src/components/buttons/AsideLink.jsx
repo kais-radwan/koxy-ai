@@ -5,7 +5,6 @@ const AsideLink = ({ title, icon, onClick, id, to }) => {
 
     return (
         <Link id={id || String(Date.now())} to={to} onClick={onClick || function () {}} className="asideLink group relative transition-all duration-300">
-            <Icon name={icon} />
             <div className="">{title}</div>
         </Link>
     )

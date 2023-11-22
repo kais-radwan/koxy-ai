@@ -1,9 +1,13 @@
-import Logo from "./Logo";
-import AsideLink from "./AsideLink";
-import { logOut } from "../functionality/auth/auth.ts";
-import Button from "./Button.jsx";
+import Logo from "../Logo";
+import AsideLink from "../buttons/AsideLink";
+import { logOut } from "../../functionality/auth/auth.ts";
+import { useEffect } from "react";
 
-const Sidebar = () => {
+const WorkspaceSidebar = ({ active }) => {
+
+    useEffect( () => {
+        document.getElementById(active).classList.add('active');
+    }, []);
 
     return (
 
@@ -11,18 +15,12 @@ const Sidebar = () => {
 
             <Logo size="w-11" _static={true} title={true} />
 
-            <Button options={{
-                classes: "smallButton mb-4",
-                title: "Switch project",
-                leftIcon: "sort"
-            }} />
+            <div className="w-full mb-4"></div>
 
-            <AsideLink title="Overview" icon="home" />
+            <AsideLink id="overview" title="Overview" icon="home" />
             <AsideLink title="Services" icon="cubes" />
 
-            <div className="text-green-500">
-                <AsideLink title="Upgrade plan" icon="crown" />
-            </div>
+            <AsideLink title="Upgrade plan" icon="crown" />
 
             <AsideLink title="API keys" icon="lock" />
             <AsideLink title="Usage" icon="chart-simple" />
@@ -45,4 +43,4 @@ const Sidebar = () => {
 
 }
 
-export default Sidebar;
+export default WorkspaceSidebar;

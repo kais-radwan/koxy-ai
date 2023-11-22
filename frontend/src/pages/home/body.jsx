@@ -9,6 +9,9 @@ import AuthInput from "../../components/inputs/AuthInput.jsx";
 import Label from "../../components/Label.jsx";
 import Modal, { openModal } from "../../components/layouts/Modal.jsx";
 import { createWorkspace } from "../../functionality/workspaces.ts";
+import { Link } from "react-router-dom";
+import HomeNavbar from "./navbar.jsx";
+import HeroIcon from "../../components/icons/HeroIcon.jsx";
 
 let workspacesData = null;
 
@@ -50,7 +53,7 @@ const Home = ({ user }) => {
     return (
         <>
 
-            <HomeSidebar active="workspaces" />
+            <HomeNavbar active="workspaces" user={user} />
 
             {workspaces === null
 
@@ -107,7 +110,7 @@ const Workspaces = ({ workspaces }) => {
         <div className="innerContainer">
             <div className="flex items-center gap-4 w-full">
                 {
-                    workspaces.documents.map(doc => (<Workspace key={doc["$id"]} info={doc} />))
+                    workspaces.documents.map(doc => (<Workspace key={doc["$id"]} workspace={doc} />))
                 }
             </div>
             <p className="text-sm opacity-70 flex items-center gap-2">
@@ -118,25 +121,25 @@ const Workspaces = ({ workspaces }) => {
 
 }
 
-const Workspace = ({ info }) => {
+const Workspace = ({ workspace }) => {
 
     const props = [
         {
             key: "Workspace ID",
-            value: info.id
+            value: workspace.id
         }
     ]
 
     return (
 
-        <div className="w-full border-1 border-border/20 bg-fgLight/70 rounded-xl flex flex-col p-4 gap-2 mb-10 transition-all duration-300 cursor-pointer hover:border-green-500">
+        <Link to={`/workspace/${workspace.id}`} className="w-full border-1 border-border/20 bg-fgLight/70 rounded-xl flex flex-col p-4 gap-2 mb-6 transition-all duration-300 cursor-pointer hover:border-green-500">
             <div className="flex items-center gap-3 mb-4 pb-4 border-b-1 border-border/20">
-                <div className="w-full flex items-center gap-2">
-                    {/* <Icon name="server" /> */}
-                    <p className="text-sm font-bold min-w-max">{info?.name}</p>
+                <div className="w-full flex items-center gap-3">
+                    <HeroIcon icon="server" />
+                    <p className="text-sm font-bold min-w-max">{workspace?.name}</p>
                 </div>
                 <div className="w-full flex items-center justify-end">
-                    <Label info={info.plan} />                    
+                    <Label info={workspace.plan} />                    
                 </div>
             </div>
 
@@ -151,7 +154,7 @@ const Workspace = ({ info }) => {
 
             </div>
 
-        </div>
+        </Link>
 
     )
 

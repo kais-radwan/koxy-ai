@@ -112,26 +112,19 @@ export const getWorkspace = async (workspaceId: string): Promise<Models.Document
 
     if (!data) { return undefined };
 
-    let doc: Models.Document = data[0];
+    const docs = data.documents;
+    let docData;
 
-    return doc;
+    docs.map(doc => {
+        if (doc.id === workspaceId) {
+            docData = doc;
+        }
+    })
 
-}
+    if (docData) {
+        return docData;
+    }
 
-function getCurrentDate() {
-    const currentDate = new Date();
+    return undefined;
 
-    // Get day, month, and year components
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1; // Month is zero-based, so we add 1
-    const year = currentDate.getFullYear().toString();
-
-    // Ensure that single-digit day and month are formatted with leading zeros
-    const formattedDay = (day < 10) ? `0${day}` : day;
-    const formattedMonth = (month < 10) ? `0${month}` : month;
-
-    // Format the date as "mm/dd/yy"
-    const formattedDate = `${formattedMonth}/${formattedDay}/${year}`;
-
-    return formattedDate;
 }

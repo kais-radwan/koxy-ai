@@ -9,7 +9,6 @@ const Hero = ({ title, description, icon, Actions }) => {
             <div className="flex flex-col gap-5">
         
                 <div className="flex items-center gap-6">
-                    <HeroIcon icon={icon} />
                     <div className="flex flex-col gap-1">
                         <h2 className="title">{title}</h2>
                         {description !== undefined ?<p className="text-xs opacity-70 min-w-max">{description}</p> : <></>}
@@ -18,7 +17,7 @@ const Hero = ({ title, description, icon, Actions }) => {
         
             </div>
             
-            <div className="flex w-full items-center justify-end">
+            <div className="flex w-full items-center justify-end gap-6">
                 {Actions !== undefined
                     ? <Actions />
                     : <></>
