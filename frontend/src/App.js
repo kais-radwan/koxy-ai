@@ -11,14 +11,6 @@ import Account from "./pages/home/account";
 // Workspace
 import WorkspaceOverview from "./pages/workspace/overview";
 
-const h = () => {
-
-    return (
-        <h1>Hello</h1>
-    )
-
-}
-
 const App = () => {
 
     return (

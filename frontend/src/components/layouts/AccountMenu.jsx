@@ -25,7 +25,7 @@ const AccountMenu = ({ user }) => {
 
             <img onClick={toggleMenu} src={photo} className="w-8 rounded-[99rem] border-1 border-transparent hover:border-green-300 transition-all cursor-pointer" />
 
-            <div id="accountMenu" className="fixed top-14 right-10 p-4 bg-[#181818] border-1 border-border flex flex-col gap-4 text-sm rounded-xl drop-shadow-md translate-y-[-100px] scale-0 transition-all duration-200 z-50">
+            <div id="accountMenu" className="fixed top-12 right-6 p-4 bg-[#181818] border-1 border-border flex flex-col gap-4 text-sm rounded-xl drop-shadow-md translate-y-[-100px] scale-0 transition-all duration-200 z-50">
                 <p className="text-xs opacity-70">{user.email}</p>
                 <LinkButton options={{
                     to: "/account",

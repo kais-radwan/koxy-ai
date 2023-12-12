@@ -23,7 +23,7 @@ const WorkspaceNavbar = ({ id, active, user }) => {
             <Logo title={true} _static={true} />
 
             <AsideLink id="sandboxes" title="Sandboxes" to={`/workspace/${id}`} />
-            <AsideLink id="ai" title="AI Models" to="/account" />
+            <AsideLink id="ai" title="Models" to="/account" />
             <AsideLink id="docs" title="Databases" to="/account" />
 
             <div className="relative">
@@ -41,11 +41,6 @@ const WorkspaceNavbar = ({ id, active, user }) => {
                     <AsideLink
                         id="domains"
                         title="Real-time"
-                    />
-
-                    <AsideLink
-                        id="domains"
-                        title="Storage"
                     />
 
                     <AsideLink

@@ -4,7 +4,6 @@ import App from './App';
 import Alert from './components/Alert';
 import Waiting from './components/Waiting';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const alertRoot = ReactDOM.createRoot(document.getElementById('alert'));
 const waitingRoot = ReactDOM.createRoot(document.getElementById('waiting'));

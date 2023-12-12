@@ -548,15 +548,15 @@ video {
   left: 0px;
   z-index: 40;
   display: flex;
-  height: 4rem;
+  height: 3.5rem;
   width: 100vw;
   align-items: center;
   gap: 1rem;
   border-bottom-width: 1px;
   border-color: #51515151;
-  background-color: rgb(22 22 22 / 0.7);
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  background-color: rgb(22 22 22 / 0.8);
+  padding-left: 2rem;
+  padding-right: 2rem;
   --tw-backdrop-blur: blur(24px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -564,12 +564,12 @@ video {
 
 .mainContainer {
   min-height: 100vh;
-  padding-top: 4rem;
+  padding-top: 3.5rem;
   /* background: linear-gradient(-120deg, rgba(34,197,94,.05) 0%, rgba(31,31,31,1) 50%); */
 }
 
 .innerContainer {
-  padding: 2.5rem;
+  padding: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -876,12 +876,12 @@ button {
   left: 0px;
 }
 
-.right-10 {
-  right: 2.5rem;
-}
-
 .right-4 {
   right: 1rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .right-\[-\.2rem\] {
@@ -898,6 +898,10 @@ button {
 
 .top-\[-\.2rem\] {
   top: -.2rem;
+}
+
+.top-12 {
+  top: 3rem;
 }
 
 .z-10 {
@@ -1079,6 +1083,11 @@ button {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .rotate-\[-45deg\] {
   --tw-rotate: -45deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1092,12 +1101,6 @@ button {
 .scale-0 {
   --tw-scale-x: 0;
   --tw-scale-y: 0;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-110 {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1661,8 +1664,13 @@ html {
   display: none;
 }
 
-.group:hover .group-hover\:rotate-0 {
-  --tw-rotate: 0deg;
+.group:hover .group-hover\:rotate-\[-45deg\] {
+  --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:rotate-\[45deg\] {
+  --tw-rotate: 45deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

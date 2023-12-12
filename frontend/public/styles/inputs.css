@@ -9,16 +9,16 @@
     }
 
     .navbar {
-        @apply fixed top-0 left-0 w-screen h-16 border-b-1 border-border pl-10 pr-10 flex items-center gap-4 bg-bg/70 backdrop-blur-xl z-40;
+        @apply fixed top-0 left-0 w-screen h-14 border-b-1 border-border pl-8 pr-8 flex items-center gap-4 bg-bg/80 backdrop-blur-xl z-40;
     }
 
     .mainContainer {
-        @apply pt-16 min-h-screen;
+        @apply pt-14 min-h-screen;
         /* background: linear-gradient(-120deg, rgba(34,197,94,.05) 0%, rgba(31,31,31,1) 50%); */
     }
 
     .innerContainer {
-        @apply p-10 pt-8 pb-8;
+        @apply p-8 pt-8 pb-8;
     }
 
     .infoContainer {

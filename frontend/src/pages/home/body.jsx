@@ -68,7 +68,6 @@ const Home = ({ user }) => {
                         <Hero
                             title="Your workspaces"
                             description={`${workspaces.total}/2 Workspaces`}
-                            icon="server"
                             Actions={newWorkspaceButton}
                         />
 
@@ -135,7 +134,7 @@ const Workspace = ({ workspace }) => {
         <Link to={`/workspace/${workspace.id}`} className="w-full border-1 border-border/20 bg-fgLight/70 rounded-xl flex flex-col p-4 gap-2 mb-6 transition-all duration-300 cursor-pointer hover:border-green-500">
             <div className="flex items-center gap-3 mb-4 pb-4 border-b-1 border-border/20">
                 <div className="w-full flex items-center gap-3">
-                    <HeroIcon icon="server" />
+                    <HeroIcon icon="cloud" />
                     <p className="text-sm font-bold min-w-max">{workspace?.name}</p>
                 </div>
                 <div className="w-full flex items-center justify-end">
